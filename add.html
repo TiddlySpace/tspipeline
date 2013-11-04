@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <title></title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/modernizr-2.5.3.min.js"></script>
+</head>
+<body>
+
+    <form>
+        <input type="text" placeholder="project name" id="title" />
+        <select name="select" data-tag-name="market_vertical">
+          <option value="finance">Finance</option> 
+          <option value="healthcare" selected>Healthcare</option>
+          <option value="gaming">Gaming</option>
+        </select>
+        <select name="select" data-tag-name="origin">
+          <option value="ei">EI</option> 
+          <option value="re" selected>RE</option>
+          <option value="ci">CI</option>
+        </select>
+        <select name="select" data-tag-name="maturity">
+          <option value="phase1">Phase1</option>
+          <option value="phase2">Phase2</option>
+          <option value="phase3">Phase3</option>
+          <option value="phase4">Phase4</option>
+          <option value="phase5">Phase5</option>
+        </select>
+        <input type="text" placeholder="current lead" data-field-name="lead" />
+        <input type="text" placeholder="GS sponsor" data-field-name="gs_sponsor" />
+        <select name="select" data-field-name="rag">
+          <option value="green">Green</option> 
+          <option value="amber" selected>Amber</option>
+          <option value="red">Red</option>
+        </select>
+        <select name="select" data-field-name="category">
+          <option value="bau">BAU</option> 
+          <option value="value2" selected>Val 2</option>
+          <option value="value3">Val 3</option>
+        </select>
+        <textarea name="" id="" placeholder="notes"></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="/bags/common/tiddlers/jquery.js"></script>
+    <script src="/status.js"></script>
+    <script src="/pipeline.js"></script>
+</body>
+</html>

@@ -5,6 +5,7 @@ $(function() {
     var twS = tiddlyweb.status,
         space = twS.space.name,
         defaultBag = space + '_public',
+        defaultTags = ['project'],
         host = '/';
 
     function submitForm(form) {
@@ -22,7 +23,7 @@ $(function() {
         tiddler = {
             title: $("#title", form).val(),
             modifier: twS.username,
-            tags: getFormTags(form)
+            tags: defaultTags.concat(getFormTags(form))
         }
         var additionalFields = getFormFields(form);
         tiddler.fields = $.extend({}, additionalFields);

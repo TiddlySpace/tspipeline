@@ -1,3 +1,4 @@
+;(function($,exports) {
 $(function() {
     "use strict";
 
@@ -64,7 +65,7 @@ $(function() {
         });
     }
 
-    function init() {
+    function add_init() {
         $.ajaxSetup({
             beforeSend: function(xhr) {
                 xhr.setRequestHeader("X-ControlView", "false");
@@ -78,5 +79,12 @@ $(function() {
         });
     }
 
-    init();
-});    
+    function pipe_init() {}
+
+    exports.pipeline = {
+        add_init: add_init,
+        pipe_init: pipe_init
+    };
+});
+}(jQuery, window));
+ 

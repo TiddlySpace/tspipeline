@@ -8,6 +8,7 @@
 
 $font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $gs_purple: #55379B;
+$ts_blue: #0082af;
 
 @import "top_bar";
 
@@ -38,5 +39,13 @@ form {
 .active .helptext {
     opacity: 1;
 }
+
+.submit-msg {
+    padding: 0 1rem;
+    color: $ts_blue;
+    display: none;
+}
+.submit-msg.success { color: #35b15a; }
+.submit-msg.error { color: #c33; }
 
 @import "footer";

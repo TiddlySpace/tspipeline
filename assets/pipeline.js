@@ -6,15 +6,29 @@ $(function() {
         space = twS.space.name,
         defaultBag = space + '_public',
         defaultTags = ['project'],
-        host = '/';
+        host = '/',
+        $submitEl = undefined;
+
+    function submitSucess() {
+        $submitEl
+            .addClass('success')
+            .text("successfully added")
+            .fadeOut(4000);
+    }
+
+    function submitError() {
+        $submitEl
+            .addClass('error')
+            .text("there was an error whilst submitting")
+            .fadeOut(4000);
+        // other tasks that need doing on error....
+    }
 
     function submitForm(form) {
         var tiddler = formTiddler(form),
-            url = tiddlerURI( host, defaultBag, tiddler.title),
-            success,
-            error;
+            url = tiddlerURI( host, defaultBag, tiddler.title);
 
-            _doPUT(url, tiddler);
+            _doPUT(url, tiddler, submitSucess, submitError);
             // should probably use deferreds to ensure both notes and project
             // details are put successfully
             noteTiddler(tiddler.title, form);
@@ -97,8 +111,15 @@ $(function() {
         });
         //check hash and fill in form if necessary
 
+        $submitEl = $(".submit-msg", "form");
+
         $('form').on('submit', function(ev) {
             ev.preventDefault();
+            $submitEl
+                .removeClass()
+                .addClass("submit-msg")
+                .text( "submitting....")
+                .fadeIn('fast');
             submitForm( ev.currentTarget );
         });
     }

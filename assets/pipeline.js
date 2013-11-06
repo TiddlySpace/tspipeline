@@ -21,7 +21,7 @@ $(function() {
         var tiddler = {};
 
         tiddler = {
-            title: $("#title", form).val(),
+            title: $("#inputTitle", form).val(),
             modifier: twS.username,
             tags: defaultTags.concat(getFormTags(form))
         }
@@ -32,8 +32,9 @@ $(function() {
 
     function getFormTags(form) {
         var tags = [];
-        $("[data-tag-name]").each( function(index, el) {
-            tags.push( $(el).val() );
+        $("[data-tag-prefix]").each( function(index, el) {
+            var $el = $(el);
+            tags.push( $el.data("tag-prefix") + ":" + $el.val() );
         });
         return tags;
     }

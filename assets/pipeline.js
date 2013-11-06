@@ -103,6 +103,36 @@ $(function() {
         });
     }
 
+    function fetchProjects( callback ) {
+        $.getJSON("/tiddlers.json?select=tag:project&fat=1&render=1", function(resp) {
+            if(resp) {
+                callback(resp);
+            }
+        });
+    };
+
+    function displayProjects(projects) {
+        var projecttmpl = Handlebars.compile( $("#project-card-template").html() );
+        $.each(projects, function(ind, item) {
+            var data = {
+                title: item.title,
+                lead: item.fields.lead,
+                sponsor: item.fields.gs_sponsor
+            };
+            $( projecttmpl( resolveMachineTags(item.tags, data) ) ).appendTo(".wrapper");
+        });
+    }
+
+    function resolveMachineTags(tags, data) {
+        $.each(tags, function(ind, item) {
+            if(item.indexOf(":") !== -1) {
+                var parts = item.split(":");
+                data[parts[0]] = parts[1];
+            }
+        })
+        return data;
+    }
+
     function add_init() {
         $.ajaxSetup({
             beforeSend: function(xhr) {
@@ -124,7 +154,9 @@ $(function() {
         });
     }
 
-    function pipe_init() {}
+    function pipe_init() {
+        fetchProjects( displayProjects );
+    }
 
     exports.pipeline = {
         add_init: add_init,

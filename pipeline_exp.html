@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+
+<head>
+    <meta charset="utf-8"/>
+    <title>Pipeline Viewer</title>
+
+    <link rel="stylesheet" href="/pipeline.css">
+
+    <script src="http://gsmobile.tiddlyspace.com/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+    <div class="project">
+        <section class="details">
+            <header>
+                <h2 class="subtitle sector">Finance</h2>
+                <h1>Project Name</h1>
+            </header>
+            <div class="origin">
+                <a href="#">Research</a>
+            </div>
+        </section>
+        <section class="owners">
+            <div class="lead">
+                <h2 class="subtitle">Lead</h2>
+                <span>Colm Britton</span>
+            </div>
+            <div class="sponsor">
+                <h2 class="subtitle">Sponsor</h2>
+                <span>Chris Dent</span>
+            </div>
+        </section>
+    </div>
+
+    <div class="project rag_green">
+        <section class="details">
+            <header>
+                <h2 class="subtitle sector">Finance</h2>
+                <h1>Project Name</h1>
+            </header>
+            <div class="origin">
+                <a href="#">Research</a>
+            </div>
+        </section>
+        <section class="owners">
+            <div class="lead">
+                <h2 class="subtitle">Lead</h2>
+                <span>Colm Britton</span>
+            </div>
+            <div class="sponsor">
+                <h2 class="subtitle">Sponsor</h2>
+                <span>Chris Dent</span>
+            </div>
+        </section>
+    </div>
+
+    <ul class="rag-status clearfix">
+        <li><a href="red">Red</a></li>
+        <li><a href="amber">Amber</a></li>
+        <li><a href="green">Green</a></li>
+    </ul>
+
+    <ul class="rag-status clearfix">
+        <li><a href="red">Red</a></li>
+        <li><a class="current" href="amber">Amber</a></li>
+        <li><a href="green">Green</a></li>
+    </ul>
+
+    <div class="project rag_green filteredout">
+        <section class="details">
+            <header>
+                <h2 class="subtitle sector">Finance</h2>
+                <h1>Project Name</h1>
+            </header>
+            <div class="origin">
+                <a href="#">Research</a>
+            </div>
+        </section>
+        <section class="owners">
+            <div class="lead">
+                <h2 class="subtitle">Lead</h2>
+                <span>Colm Britton</span>
+            </div>
+            <div class="sponsor">
+                <h2 class="subtitle">Sponsor</h2>
+                <span>Chris Dent</span>
+            </div>
+        </section>
+    </div>
+
+    <script src="/bags/common/tiddlers/jquery.js"></script>
+    <script src="/status.js"></script>
+    <script src="/pipeline.js"></script>
+</body>
+</html>

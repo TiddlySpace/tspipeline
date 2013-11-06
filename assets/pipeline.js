@@ -15,6 +15,9 @@ $(function() {
             error;
 
             _doPUT(url, tiddler);
+            // should probably use deferreds to ensure both notes and project
+            // details are put successfully
+            noteTiddler(tiddler.title, form);
     }
 
     function formTiddler(form) {
@@ -28,6 +31,20 @@ $(function() {
         var additionalFields = getFormFields(form);
         tiddler.fields = $.extend({}, additionalFields);
         return tiddler;
+    }
+
+    function noteTiddler(title, form) {
+        var note_title = title + "_notes",
+            url = tiddlerURI( host, defaultBag, note_title );
+
+        var note_tiddler = {
+            title: note_title,
+            modifier: twS.username,
+            tags: ["note"],
+            text: $("#notesText", form).val()
+        };
+
+        _doPUT(url, note_tiddler);
     }
 
     function getFormTags(form) {

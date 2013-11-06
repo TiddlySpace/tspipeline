@@ -123,6 +123,7 @@ $(function() {
             var compdata = resolveMachineTags(item.tags, data);
             $( projecttmpl( compdata ) ).appendTo("section." + compdata.mat);
         });
+        $.event.trigger("displayed");
     }
 
     function resolveMachineTags(tags, data) {
@@ -136,6 +137,7 @@ $(function() {
     }
 
     function performFilter(type, filter) {
+        console.log(type, filter);
         var $projects = $(".project", ".wrapper");
         $projects
             .removeClass("active")
@@ -144,6 +146,15 @@ $(function() {
             })
             .addClass("active");
         $(".filter-switch").show();
+    }
+
+    function checkForFilters() {
+        // check if there is a hash filter
+        if(window.location.hash !== '' && window.location.hash.indexOf("/") !== -1) {
+            var filter = window.location.hash.split("#")[1],
+                filter_parts = filter.split("/");
+            performFilter( filter_parts[0], filter_parts[1] );
+        }
     }
 
     function add_init() {
@@ -170,6 +181,11 @@ $(function() {
     function pipe_init() {
         // fetch and render project cards
         fetchProjects( displayProjects );
+
+        // once projects displayed check for filters
+        $( document ).on("displayed", function() {
+            checkForFilters();
+        });
 
         // handler to watch for origin filters
         $(".wrapper").on("click", ".origin a" , function(ev) {

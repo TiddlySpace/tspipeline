@@ -96,6 +96,11 @@ body {
     color: #fff;
     font-size: 0.75em;
     font-weight: 500;
+
+    a {
+        text-decoration: none;
+        color: #fff;
+    }
 }
 
 .clearfix {
@@ -142,7 +147,7 @@ a[href*="green"] { background-color : $rag_green; }
         color: rgb(56, 64, 71);
     }
 
-    .subtitle {
+    .subtitle a {
         color: grey;
     }
 

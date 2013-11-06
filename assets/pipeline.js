@@ -135,12 +135,12 @@ $(function() {
         return data;
     }
 
-    function performFilter(filter) {
+    function performFilter(type, filter) {
         var $projects = $(".project", ".wrapper");
         $projects
             .removeClass("active")
             .filter(function(index) {
-                return $(this).find(".origin a").attr("href") === "#"+filter;
+                return $(this).find("." + type + " a").attr("href") === "#"+type+"/"+filter;
             })
             .addClass("active");
         $(".filter-switch").show();
@@ -173,7 +173,12 @@ $(function() {
 
         // handler to watch for origin filters
         $(".wrapper").on("click", ".origin a" , function(ev) {
-            performFilter( $(ev.currentTarget).text() );
+            performFilter( "origin", $(ev.currentTarget).text() );
+        });
+
+        // handler to watch for sector filters
+        $(".wrapper").on("click", ".sector a" , function(ev) {
+            performFilter( "sector", $(ev.currentTarget).text() );
         });
 
         // handler to watch for filters to be removed

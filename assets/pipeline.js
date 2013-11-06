@@ -119,7 +119,8 @@ $(function() {
                 lead: item.fields.lead,
                 sponsor: item.fields.gs_sponsor
             };
-            $( projecttmpl( resolveMachineTags(item.tags, data) ) ).appendTo(".wrapper");
+            var compdata = resolveMachineTags(item.tags, data);
+            $( projecttmpl( compdata ) ).appendTo("section." + compdata.mat);
         });
     }
 

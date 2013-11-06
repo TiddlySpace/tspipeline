@@ -133,6 +133,17 @@ $(function() {
         return data;
     }
 
+    function performFilter(filter) {
+        var $projects = $(".project", ".wrapper");
+        $projects
+            .removeClass("active")
+            .filter(function(index) {
+                return $(this).find(".origin a").attr("href") === "#"+filter;
+            })
+            .addClass("active");
+        $(".filter-switch").show();
+    }
+
     function add_init() {
         $.ajaxSetup({
             beforeSend: function(xhr) {
@@ -155,7 +166,18 @@ $(function() {
     }
 
     function pipe_init() {
+        // fetch and render project cards
         fetchProjects( displayProjects );
+
+        // handler to watch for origin filters
+        $(".wrapper").on("click", ".origin a" , function(ev) {
+            performFilter( $(ev.currentTarget).text() );
+        });
+
+        // handler to watch for filters to be removed
+        $(".filter-switch").on("click", function() {
+            $(".project", ".wrapper").addClass("active");
+        });
     }
 
     exports.pipeline = {

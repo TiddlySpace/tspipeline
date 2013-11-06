@@ -117,7 +117,8 @@ $(function() {
             var data = {
                 title: item.title,
                 lead: item.fields.lead,
-                sponsor: item.fields.gs_sponsor
+                sponsor: item.fields.gs_sponsor,
+                rag: item.fields.rag
             };
             var compdata = resolveMachineTags(item.tags, data);
             $( projecttmpl( compdata ) ).appendTo("section." + compdata.mat);

@@ -9,6 +9,7 @@
 
 $rag_green: #35b15a;
 $rag_amber: #E0AB18;
+$rag_red: #c33;
 $font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $background: #EFEDF2;
 
@@ -114,7 +115,7 @@ body {
     }
 }
 
-a[href*="red"] { background-color : #c33; }
+a[href*="red"] { background-color : $rag_red; }
 a[href*="amber"] { background-color : $rag_amber; }
 a[href*="green"] { background-color : $rag_green; }
 
@@ -144,6 +145,10 @@ a[href*="green"] { background-color : $rag_green; }
     .subtitle {
         color: grey;
     }
+
+    &[data-rag="green"] { border-top: 5px solid $rag_green; }
+    &[data-rag="amber"] { border-top: 5px solid $rag_amber; }
+    &[data-rag="red"] { border-top: 5px solid $rag_red; }
 }
 
 .filter-switch {

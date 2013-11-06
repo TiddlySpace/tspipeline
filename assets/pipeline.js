@@ -43,7 +43,12 @@ $(function() {
         var fields = {};
         $("[data-field-name").each( function(index, el) {
             var $el = $(el);
-            fields[ $el.data("field-name") ] = $el.val();
+            if( $el.data("input-type") === "radio" ) {
+                var $radio = $("input[type='radio']:checked", $el);
+                fields[ $el.data("field-name") ] = $radio.val();
+            } else {
+                fields[ $el.data("field-name") ] = $el.val();
+            }
         });
         return fields;
     }

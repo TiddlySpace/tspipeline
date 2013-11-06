@@ -8,12 +8,17 @@
 
 $rag_green: #35b15a;
 $rag_amber: #E0AB18;
+$font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 
-// temporary styling
+@import "top_bar";
+
 body {
+    font-family: $font-fam-sans-serif;
+}
+
+.wrapper {
     width: 960px;
-    margin: 20px auto;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0 auto;
 }
 
 .project {

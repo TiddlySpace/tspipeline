@@ -5,9 +5,13 @@
 
 @import "compass/reset";
 
+$font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+@import "top_bar";
+
 form {
     width: 960px;
-    margin: 20px auto;
+    margin: 0 auto;
 }
 
 @import "footer";

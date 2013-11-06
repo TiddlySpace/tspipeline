@@ -27,7 +27,7 @@ body {
 
 .project {
     width: 440px;
-    height: 180px;
+    height: 185px;
     position: relative;
 //    border: 1px solid rgb(141, 154, 165);
     border-radius: 4px;
@@ -138,6 +138,7 @@ a[href*="green"] { background-color : $rag_green; }
 .active {
     background: #fff;
     box-shadow: 1px 1px 0 0 rgba(0,0,0,0.1);
+    height: 180px;
 
     h1 {
         color: rgb(56, 64, 71);
@@ -147,6 +148,7 @@ a[href*="green"] { background-color : $rag_green; }
         color: rgb(56, 64, 71);
     }
 
+    .subtitle,
     .subtitle a {
         color: grey;
     }

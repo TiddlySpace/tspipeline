@@ -4,14 +4,39 @@
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
 @import "compass/reset";
+@import "mixins";
 
 $font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$gs_purple: #55379B;
 
 @import "top_bar";
 
-form {
+.wrapper {
     width: 960px;
     margin: 0 auto;
+}
+
+form {
+    width: 600px;
+}
+
+.helptext {
+    opacity: 0;
+    position: absolute;
+    top: 1px;
+    left: 105%;
+    width: 300px;
+    padding: 0.4rem 1rem;
+    background: $gs_purple;
+    color: #fff;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    border-radius: 2px;
+    @include vendor-prefix("transition", opacity .4s ease-in-out);
+}
+
+.active .helptext {
+    opacity: 1;
 }
 
 @import "footer";

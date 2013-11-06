@@ -1,0 +1,8 @@
+/* Usage:
+   @include vendor-prefix(border-radius, 2px); 
+   */
+@mixin vendor-prefix($name, $argument) {
+    @each $prefix in -webkit-, -moz-, -ms-, -o-, '' {
+        #{$prefix}#{$name}: $argument;
+    }
+}

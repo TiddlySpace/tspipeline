@@ -12,12 +12,18 @@ $rag_amber: #E0AB18;
 $rag_red: #c33;
 $font-fam-sans-serif: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 $background: #EFEDF2;
+$text_dark: rgb(56, 64, 71);
 
 @import "top_bar";
 
 body {
     font-family: $font-fam-sans-serif;
     background: $background;
+}
+
+a {
+    text-decoration: none;
+    color: $text_dark;
 }
 
 .wrapper {
@@ -48,12 +54,20 @@ body {
     padding: 1.25rem 200px 1.25rem 1.25rem;
     height: 100%;
     box-sizing: border-box;
+    position: relative;
 
     h1 {
         line-height: 1.5em;
         color: grey;
         font-weight: bold;
         font-size: 1.125rem;
+    }
+
+    .edit {
+        color: #ccc;
+        position: absolute;
+        bottom: 18px;
+        right: 200px;
     }
 }
 
@@ -140,11 +154,11 @@ a[href*="green"] { background-color : $rag_green; }
     box-shadow: 1px 1px 0 0 rgba(0,0,0,0.1);
     height: 180px;
 
-    h1 {
-        color: rgb(56, 64, 71);
+    &:hover .edit {
+        color: $text_dark;
     }
 
-    .owners {
+    h1, .owners {
         color: rgb(56, 64, 71);
     }
 

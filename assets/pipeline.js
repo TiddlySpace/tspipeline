@@ -118,7 +118,8 @@ $(function() {
                 title: item.title,
                 lead: item.fields.lead,
                 sponsor: item.fields.gs_sponsor,
-                rag: item.fields.rag
+                rag: item.fields.rag,
+                url: "/add.html#" + item.title
             };
             var compdata = resolveMachineTags(item.tags, data);
             $( projecttmpl( compdata ) ).appendTo("section." + compdata.mat);
@@ -137,7 +138,6 @@ $(function() {
     }
 
     function performFilter(type, filter) {
-        console.log(type, filter);
         var $projects = $(".project", ".wrapper");
         $projects
             .removeClass("active")
@@ -157,6 +157,46 @@ $(function() {
         }
     }
 
+    function populateForm(tiddler) {
+        var $form = $("form");
+
+        $("#inputTitle", $form).val(tiddler.title);
+        $.each(tiddler.tags, function(ind, item) {
+            if(item.indexOf(":") !== -1) {
+                item = item.split(":");
+                $('[data-tag-prefix='+item[0]+']').val(item[1]);
+            }
+        });
+        $("#leadInput", $form).val(tiddler.fields.lead);
+        $("#sponsorInput", $form).val(tiddler.fields.gs_sponsor);
+        $("#typeSelect", $form).val(tiddler.fields.category);
+        $("#ragRadios_"+tiddler.fields.rag, $form).attr("checked", true);
+
+        var url = tiddlerURI( host, defaultBag, tiddler.title + "_notes" );
+        $.ajax({
+            dataType: 'json',
+            url: url,
+            success: function(tid) {
+                $("#notesText", $form).text(tid.text);
+            }
+        });
+    }
+
+    function checkHash() {
+        var hash = window.location.hash,
+            title,
+            url;
+        if (hash) {
+            hash = hash.replace(/^#/, '');
+            url = tiddlerURI( host, defaultBag, hash );
+            $.ajax({
+                dataType: 'json',
+                url: url,
+                success: populateForm
+            });
+        }
+    }
+
     function add_init() {
         $.ajaxSetup({
             beforeSend: function(xhr) {
@@ -164,6 +204,7 @@ $(function() {
             }
         });
         //check hash and fill in form if necessary
+        checkHash();
 
         $submitEl = $(".submit-msg", "form");
 
